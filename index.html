@@ -13,20 +13,13 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
   }
   
   /* Hover effect for devices with hover capability (desktops) */
-  @media (hover: hover) {
+  /* Touch devices: Tap effect using :active */
+  @media (hover: hover) and (pointer: fine) {
     .button:hover {
       background-color: blue; /* Change to blue on hover */
-    }
-  }
-  
-  /* Touch devices: Tap effect using :active */
-  @media (hover: none) {
-    .button:active {
-      background-color: red; /* Change to red when tapped */
     }
   }
         
@@ -38,5 +31,20 @@
             <button class="button">click / tap on me</button>
         </h1>
     </header>
+    <script>
+        var button = document.querySelector('.button');
+        console.log(button);
+
+        button.addEventListener('touchstart',function(){
+            button.style.backgroundColor = 'red';
+            console.log('touch start working');
+        })
+
+        button.addEventListener('touchend',function(){
+            button.style.backgroundColor = '';
+            console.log('touch end working');
+        })
+
+      </script>
 </body>
 </html>
